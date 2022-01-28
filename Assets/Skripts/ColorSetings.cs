@@ -12,6 +12,8 @@ public static class ColorSetings
     public static Transform parent;
     public static List<Image> forms;
     public static List<Image> logos;
+    public static int countForm;
+    public static int countLogo;
 
     public static int pageCoun;
 }
