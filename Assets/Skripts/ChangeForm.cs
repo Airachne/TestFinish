@@ -16,8 +16,9 @@ public class ChangeForm : MonoBehaviour
     [SerializeField] bool create;
 
     void Start()
-    {
-        GameObject formName = Instantiate(myPrefab[count], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
+    {  ColorSetings.countForm = 1;
+        ColorSetings.countLogo = 0;
+        GameObject formName = Instantiate(myPrefab[ColorSetings.countForm], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
         formName.name = "Form";
         ChangeForms();
         delete = false;
@@ -30,7 +31,6 @@ public class ChangeForm : MonoBehaviour
         if (delete == false && ColorSetings.pageCoun == 2)
         {
             GameObject.Find("Form").transform.position = Vector2.Lerp(GameObject.Find("Form").transform.position, GameObject.Find("DeletePos").transform.position, speed * Time.deltaTime);
-                //transform.position = Vector2.Lerp(GameObject.Find("Image").transform.position, GameObject.Find("DeletePos").transform.position, speed * Time.deltaTime);
         }
         if (create == true)
         {
@@ -43,20 +43,19 @@ public class ChangeForm : MonoBehaviour
     { 
         if (ColorSetings.pageCoun == 1)
         {
-            count++;
-            if (count >= myPrefab.Length)
+            ColorSetings.countForm++;
+            if (ColorSetings.countForm >= myPrefab.Length)
             {
-                count = myPrefab.Length - 1;
+                ColorSetings.countForm = myPrefab.Length - 1;
             }
-            else if (count <= 0)
+            else if (ColorSetings.countForm <= 0)
             {
-                count = 0;
+                ColorSetings.countForm = 0;
             }
 
             Destroy(GameObject.Find("Form"));
 
-            //   Instantiate(myPrefab[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
-            GameObject formName = Instantiate(myPrefab[count], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
+            GameObject formName = Instantiate(myPrefab[ColorSetings.countForm], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
             formName.name = "Form";
         }
     }
@@ -64,19 +63,18 @@ public class ChangeForm : MonoBehaviour
     {
         if (ColorSetings.pageCoun == 1)
         {
-            count--;
-            if (count >= myPrefab.Length)
+            ColorSetings.countForm--;
+            if (ColorSetings.countForm >= myPrefab.Length)
             {
-                count = myPrefab.Length - 1;
+                ColorSetings.countForm = myPrefab.Length - 1;
             }
-            else if (count <= 0)
+            else if (ColorSetings.countForm <= 0)
             {
-                count = 0;
+                ColorSetings.countForm = 0;
             }
             Destroy(GameObject.Find("Form"));
 
-            //   Instantiate(myPrefab[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
-            GameObject formName = Instantiate(myPrefab[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
+            GameObject formName = Instantiate(myPrefab[ColorSetings.countForm], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
             formName.name = "Form";
         }
     }
@@ -97,11 +95,10 @@ public class ChangeForm : MonoBehaviour
             {
                 GameObject.Find("Image").gameObject.SetActive(false);
 
-                //Instantiate(myPrefab[count], new Vector2(GameObject.Find("CreatePos").transform.position.x, GameObject.Find("CreatePos").transform.position.y), Quaternion.identity, parent);
-                GameObject formName = Instantiate(myPrefab[count], new Vector2(GameObject.Find("CreatePos").transform.position.x, GameObject.Find("CreatePos").transform.position.y), Quaternion.identity, parent);
+                GameObject formName = Instantiate(myPrefab[ColorSetings.countForm], new Vector2(GameObject.Find("CreatePos").transform.position.x, GameObject.Find("CreatePos").transform.position.y), Quaternion.identity, parent);
                 formName.name = "Form1";
 
-                GameObject logoName = Instantiate(myPrefabLogo[count], new Vector2(GameObject.Find("CreatePos").transform.position.x, GameObject.Find("CreatePos").transform.position.y), Quaternion.identity, parent);
+                GameObject logoName = Instantiate(myPrefabLogo[ColorSetings.countLogo], new Vector2(GameObject.Find("CreatePos").transform.position.x, GameObject.Find("CreatePos").transform.position.y), Quaternion.identity, parent);
                 logoName.name = "Logo";
                 create = true;
             }
@@ -111,19 +108,18 @@ public class ChangeForm : MonoBehaviour
     {
         if (ColorSetings.pageCoun == 2)
         {
-            count++;
-            if (count >= myPrefabLogo.Length)
+            ColorSetings.countLogo++;
+            if (ColorSetings.countLogo >= myPrefabLogo.Length)
             {
-                count = myPrefabLogo.Length - 1;
+                ColorSetings.countLogo = myPrefabLogo.Length - 1;
             }
-            else if (count <= 0)
+            else if (ColorSetings.countLogo <= 0)
             {
-                count = 0;
+                ColorSetings.countLogo = 0;
             }
 
             Destroy(GameObject.Find("Logo"));
-            //   Instantiate(myPrefab[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
-            GameObject logoName = Instantiate(myPrefabLogo[count], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
+            GameObject logoName = Instantiate(myPrefabLogo[ColorSetings.countLogo], new Vector2(parent.position.x, parent.position.y), Quaternion.identity, parent);
             logoName.name = "Logo";
         }
     }
@@ -131,18 +127,17 @@ public class ChangeForm : MonoBehaviour
     {
         if (ColorSetings.pageCoun == 2)
         {
-            count--;
-            if (count >= myPrefabLogo.Length)
+            ColorSetings.countLogo--;
+            if (ColorSetings.countLogo >= myPrefabLogo.Length)
             {
-                count = myPrefabLogo.Length - 1;
+                ColorSetings.countLogo = myPrefabLogo.Length - 1;
             }
             else if (count <= 0)
             {
-                count = 0;
+                ColorSetings.countLogo = 0;
             }
             Destroy(GameObject.Find("Logo"));
-            //   Instantiate(myPrefab[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
-            GameObject logoName = Instantiate(myPrefabLogo[count], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
+            GameObject logoName = Instantiate(myPrefabLogo[ColorSetings.countLogo], new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity, parent);
             logoName.name = "Logo";
         }
     }
