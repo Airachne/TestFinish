@@ -132,7 +132,7 @@ public class ChangeForm : MonoBehaviour
             {
                 ColorSetings.countLogo = myPrefabLogo.Length - 1;
             }
-            else if (count <= 0)
+            else if (ColorSetings.countLogo <= 0)
             {
                 ColorSetings.countLogo = 0;
             }
